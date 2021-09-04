@@ -70,7 +70,7 @@
 												echo 
 												'<div class="topTracks_item">' . 
 													'<audio class="player" controls>'.
-													'<source src="../' . $all_music->link . '" type="audio/mp3" />'.
+													'<source src="' . $all_music->link . '" type="audio/mp3" />'.
 													'</audio>'.
 													'<div class="topTracks_info"'.
 													'<h6>' . $all_music->title . '</h6>'.

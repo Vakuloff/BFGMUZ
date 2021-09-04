@@ -117,7 +117,7 @@ if(isset($_SESSION['id']))
 
 	//Music upload
 	if (isset($_POST['addMusic'])) {
-	  $uploadfile = "media/music/".$_FILES['uploadmusic']['name'];
+	  $uploadfile = "../media/music/".$_FILES['uploadmusic']['name'];
 	  move_uploaded_file($_FILES['uploadmusic']['tmp_name'], $uploadfile);
 	
 	  $title = $_FILES['uploadmusic']['name'];

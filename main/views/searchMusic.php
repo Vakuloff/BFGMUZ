@@ -79,6 +79,9 @@ foreach($music_search as $music_search){
 				</div>
 			</main>
 		</div>
+		<?
+			include 'sidebar.php';
+		?>
 	</div>
 </div>
 
