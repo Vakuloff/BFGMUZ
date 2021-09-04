@@ -1,10 +1,10 @@
 <? 
-	$page_title = "Search";
-	include 'header.php';
+$page_title = "Search";
+include 'header.php';
 
-	if(isset($_SESSION['id']))
+if(isset($_SESSION['id']))
 {
-	$music = new Music();
+	
 	$user_id = $_SESSION['id'];
 
 
@@ -19,19 +19,20 @@
 	
 	  $music->addMusic($dbcon, $title, $user_id, $link);
 	}
-
-	// music list
+}
+// music list
+	$music = new Music();
 	$all_music = $music->getAllMusicByUser($dbcon, $user_id);
 
 	if (!empty($_GET['musicName'])){
-	$music = new Music();
-	$search_result = $_GET['musicName'];
-	//echo $search_result;
-	$music_search = $music->searchMusic($dbcon, $search_result);
-} else {
-	echo "Empty";
-}
-}
+
+		$search_result = $_GET['musicName'];
+		$music_search = $music->searchMusic($dbcon, $search_result);
+	} else {
+
+		$search_result = '';
+		$music_search = $music->searchMusic($dbcon, $search_result);
+	}
 ?>
 <div class="container">
 	<div class="row g-0">
@@ -71,7 +72,7 @@ foreach($music_search as $music_search){
 							'</div>' .
 						'</a>' .
 					'</div>' .
-					'</div>' .
+				'</div>' .
 			'</div>';
 	}
 ?>

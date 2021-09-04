@@ -17,6 +17,9 @@
 				</div>
 			</main>
 		</div>
+		<?
+			include 'sidebar.php';
+		?>
 	</div>
 </div>
 <? 
