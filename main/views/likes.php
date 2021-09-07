@@ -1,19 +1,30 @@
 <?php 
 // connect to database
+//include 'test.php';
 $conn = mysqli_connect('nickvaku.mysql.tools', 'nickvaku_bfgmuz', '42+hsZG~p9', 'nickvaku_bfgmuz');
 
 // lets assume a user is logged in with id $user_id
-$user_id=39;
+// ------------------------------------------------------------------
+// $user_id = 48;
+// $user_id1 = intval($_SESSION['id']);
 
+// if($user_id === $user_id1){
+//   echo 'Equal';
+// } else{
+//   echo 'unequal';
+// }
+//-------------------------------------------------------------------
 if (!$conn) {
   die("Error connecting to database: " . mysqli_connect_error($conn));
   exit();
 }
 
 // if user clicks like button
+//echo $user_id;
 if (isset($_POST['action'])) {
   $music_id = $_POST['music_id'];
   $action = $_POST['action'];
+  $user_id = intval($_SESSION['id']);
   switch ($action) {
   	case 'like':
          $sql="INSERT INTO UsersxMusic (music_id, user_id, action, date) 

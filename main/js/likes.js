@@ -14,7 +14,7 @@ $('.like-btn').on('click', function(){
   	type: 'post',
   	data: {
   		'action': action,
-  		'music_id': music_id
+  		'music_id': music_id,
   	},
   	success: function(data){
   		res = JSON.parse(data);
