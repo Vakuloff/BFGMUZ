@@ -52,14 +52,14 @@ if(isset($_SESSION['id']))
 foreach($music_search as $music_search){
 	echo 	'<div class="topTracks_item">' .
 				'<audio class="player" controls>' .
-					'<source src="../' . $music_search['link'] . '" type="audio mp3" />' .
+					'<source src="' . $music_search['link'] . '" type="audio mp3" />' .
 				'</audio>' .
 				'<div class="topTracks_info">' .
 					'<h6>' . $music_search['title'] . '</h6>' .
 				'</div>' .
 				'<div class="topTracks_wrapper">' .
 					'<div class="topTracks_likes">' .
-						'<span class="like"></span>' .
+						'<i class="fa fa-thumbs-o-up like-btn"></i>' .
 					'</div>' .
 					'<div class="topTracks_user">' .
 						'<div class="userInfo">' .

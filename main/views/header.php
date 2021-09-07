@@ -108,6 +108,7 @@ function display_error() {
 }
 session_start();
 //---------------------------LOGIN-END----------------------------------------------------------
+include('likes.php');
 //---------------------------MUSIC-LIST----------------------------------------------------------
 if(isset($_SESSION['id']))
 {
@@ -131,6 +132,7 @@ if(isset($_SESSION['id']))
 	$all_music = $music->getAllMusicByUser($dbcon, $user_id);
 }
 //---------------------------MUSIC-LIST-END---------------------------------------------------------
+//echo $date = date("d/m/Y") . " " . date("h:i:sa");
  ?>
 
 <!DOCTYPE html>
@@ -160,7 +162,8 @@ if(isset($_SESSION['id']))
 	<meta property="og:image" content="../images/dist/main/logo.jpg">
 	
 	<meta name="theme-color" content="#3A55EE">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="../css/main.min.css">
 
 </head>

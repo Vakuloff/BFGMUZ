@@ -19,13 +19,6 @@
 									<button><svg width="4" height="18" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="2"/><circle cx="2" cy="9" r="2"/><circle cx="2" cy="16" r="2"/></svg></button>
 								</div>
 							</div>
-							<div class="userProfile_info">
-								<div class="subs">
-									<div class="subscribers"><span class="num">1000</span>подписчиков</div>
-									<div class="subscription"><span class="num">100</span>подписок</div>
-								</div>
-								<button class="button"><span>подписаться</span></button>
-							</div>
  							<form method="POST" enctype=multipart/form-data>
  								<input type="file" class="button download" name="uploadmusic">
  								<button type="submit" name="addMusic" class="button download"> Загрузить трек </button>
