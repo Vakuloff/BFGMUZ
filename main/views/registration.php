@@ -11,8 +11,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   // username validation
   if(empty(trim($_POST["username"]))){
-    $username_err = "Username is required.";
-    array_push($errors, "Username is required.");
+    $username_err = "Введите логин";
+    array_push($errors, "Введите логин");
   }
   else{
     $sql = "SELECT id FROM Users WHERE username = :username";
@@ -131,8 +131,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   //password validation
   if(empty(trim($_POST["password"]))){
-    $password_err = "Password is required.";
-    array_push($errors, "Password is required.");
+    $password_err = "Введите пароль";
+    array_push($errors, "Введите пароль");
     // make sure password length is at least 6 characters
   } elseif(strlen(trim($_POST["password"])) < 6){
     $password_err = "Пароль должен состоять минимум из 6 символов";

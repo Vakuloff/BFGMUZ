@@ -70,9 +70,9 @@ if (isset($_POST['login'])) {
               
 
               ?>  
-              <script type="text/javascript">
+<!--               <script type="text/javascript">
               window.location.href = 'index.php';
-              </script>
+              </script> -->
               <?php
             }
             else{
