@@ -109,7 +109,13 @@ if(isset($_GET['user_id'])){
       			echo "Something went wrong! Please try again later. user error";
     		}
   		}
-  		// upload an image
+  		unset($stmt);
+	}
+	// upload an image
+  	if( $_FILES['img']['name'] === '' || $_FILES['img']['name'] === null || $_FILES['img']['name'] === ' '){
+  		$img='default.svg';
+  	}else{
+  		
   		$folder = "../images/dist/main/avatars/";
   		$img = $_FILES['img']['name'];
 		
@@ -117,7 +123,7 @@ if(isset($_GET['user_id'])){
   		$target_file = $folder.basename($_FILES["img"]["name"]);
 		
   		$imgFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-  		$allowed = array('jpeg','png','jpg','JPEG','PNG','JPG');
+  		$allowed = array('jpeg','png','jpg','svg','JPEG','PNG','JPG', 'SVG');
   		$filename = $_FILES['img']['name'];
 		
   		$ext=pathinfo($filename, PATHINFO_EXTENSION);
@@ -127,8 +133,8 @@ if(isset($_GET['user_id'])){
   		else{
   		  	move_uploaded_file( $_FILES['img']['tmp_name'], $path);
   		}
-  		unset($stmt);
-		}
+  	}
+  	
 
 
 

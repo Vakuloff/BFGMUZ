@@ -105,27 +105,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       echo "Something went wrong! Please try again later. user error";
     }
   }
-  // upload an image
-  $folder = "../images/dist/main/avatars/";
-  $img = $_FILES['img']['name'];
-
-  $path = $folder . $img ;
-  $target_file = $folder.basename($_FILES["img"]["name"]);
-
-  $imgFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-  $allowed = array('jpeg','png','jpg','JPEG','PNG','JPG');
-  $filename = $_FILES['img']['name'];
-
-  $ext=pathinfo($filename, PATHINFO_EXTENSION);
-  if(!in_array($ext,$allowed)){
-    echo "Please only select img file of type JPG, JPEG, PNG OR GIF";
-  }
-  else{
-    move_uploaded_file( $_FILES['img']['tmp_name'], $path);
-  }
-
-  unset($stmt);
-}
+  	unset($stmt);
+	}
+	  // upload an image
+  if( $_FILES['img']['name'] === '' || $_FILES['img']['name'] === null || $_FILES['img']['name'] === ' '){
+  		$img='default.svg';
+  	}else{
+  		
+  		$folder = "../images/dist/main/avatars/";
+  		$img = $_FILES['img']['name'];
+		
+  		$path = $folder . $img ;
+  		$target_file = $folder.basename($_FILES["img"]["name"]);
+		
+  		$imgFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+  		$allowed = array('jpeg','png','jpg','svg','JPEG','PNG','JPG', 'SVG');
+  		$filename = $_FILES['img']['name'];
+		
+  		$ext=pathinfo($filename, PATHINFO_EXTENSION);
+  		if(!in_array($ext,$allowed)){
+  		  	echo "Please only select img file of type JPG, JPEG, PNG OR GIF";
+  		}
+  		else{
+  		  	move_uploaded_file( $_FILES['img']['tmp_name'], $path);
+  		}
+  	}
 
 
 
