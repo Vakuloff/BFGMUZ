@@ -12,6 +12,7 @@
 		$user = $u->getUserById($dbcon, $user_id);
 		$music = $m->getAllMusicByUser($dbcon, $user_id);
 	}
+
 ?>
 <div class="container">
 	<div class="row g-0">

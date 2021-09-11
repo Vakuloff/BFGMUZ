@@ -5,7 +5,7 @@
 			echo 	'<div class="user">
 						<div class="userWrapper userIn">
 							<div class="userProfile">
-								<a href="#" class="userActive_item">
+								<a href="profile.php?user_id=' . $_SESSION['id'] . '" class="userActive_item">
 									<div class="userActive_photo">
 										<img src="../images/dist/main/avatars/' .$_SESSION["img"] . '" alt="UserName 1">
 									</div>

@@ -40,7 +40,7 @@
 				Главная</a>
 			</li>
 			<li>
-				<a href="profile.php?user_id= <?echo $_SESSION['id'] ?>"><span>
+				<a href="profile.php?user_id=<?echo $_SESSION['id'] ?>"><span>
 
 					<svg class="menuIcon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 28.7 29.2"
 						xml:space="preserve">
