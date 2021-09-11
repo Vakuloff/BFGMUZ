@@ -106,7 +106,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
   }
   // upload an image
-  $folder = "images/dist/main/avatars/";
+  $folder = "../images/dist/main/avatars/";
   $img = $_FILES['img']['name'];
 
   $path = $folder . $img ;
@@ -190,9 +190,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION["img"] = $img;
       ?>
         <!-- if all requirements are met for registeration, redirect to welcome page -->
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
         window.location.href = "index.php";
-        </script>
+        </script> -->
       <?php  
       }
       else{

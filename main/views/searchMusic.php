@@ -2,6 +2,7 @@
 <?
   $page_title = "BfgMuz All Tracks";
   include 'header.php';
+  var_dump($music_arr[0]);
 ?>
 <div class="container">
   <div class="row g-0">
@@ -27,20 +28,20 @@
               </div>
               <div class="topTracks_wrapper">
                 <div class="topTracks_likes">
-                  <i <?php if (userLiked($music_arr['id'])): ?>
+                  <i <?php if (userLiked($music_arr['music_id'])): ?>
                     class="fa fa-thumbs-up like-btn"
                   <?php else: ?>
                     class="fa fa-thumbs-o-up like-btn"
                   <?php endif ?>
-                  data-id="<?php echo $music_arr['id'] ?>"></i>
-                  <span class="likes"><?php echo getLikes($music_arr['id']); ?></span>
+                  data-id="<?php echo $music_arr['music_id'] ?>"></i>
+                  <span class="likes"><?php echo getLikes($music_arr['music_id']); ?></span>
                 </div>
                 <div class="topTracks_user">
                   <div class="userInfo">
                     Загружен
                     <span><?php echo $music_arr['first_name'] . ' ' . $music_arr['last_name']?></span>
                   </div>
-                  <a target="_blank" href="/access-is-denied.html" class="userActive_item">
+                  <a href="profile.php?user_id=<? echo $music_arr['user_id']?>" class="userActive_item">
                     <div class="userActive_photo">
                         <img src="../images/dist/main/avatars/<?php echo $music_arr['img'] ?>" alt="UserName 1">
                     </div>

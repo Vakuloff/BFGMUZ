@@ -55,7 +55,7 @@ class Music
 		return $music;
 	}
 
-	public function unlikeMusic($user_id, $music_id)
+	public function unlikeMusic($dbcon, $user_id, $music_id)
 	{
 		$sql="DELETE FROM UsersxMusic WHERE user_id=$user_id AND music_id=$music_id";
 
@@ -67,9 +67,9 @@ class Music
         return $music;
 	}
 
-	public function getLikes($music_id)
+	public function getLikes($dbcon, $music_id)
 	{
-		$sql="SELECT COUNT(*) FROM UsersxMusic
+		$sql="SELECT COUNT(*) AS Likes FROM UsersxMusic
 		WHERE music_id = $music_id AND action='like'";
 
 		$pst = $dbcon->prepare($sql);
@@ -80,7 +80,7 @@ class Music
 		return $music;
 	}
 
-	public function ifLiked($user_id, $music_id)
+	public function ifLiked($dbcon, $user_id, $music_id)
 	{
 		$sql = "SELECT * FROM UsersxMusic WHERE user_id=$user_id 
   		  AND music_id=$music_id AND rating_action='like'";

@@ -1,6 +1,7 @@
 <?php 
 require_once '../model/Database.php'; 
 require_once '../model/Music.php'; 
+require_once '../model/User.php'; 
 
 $dbcon = Database::getDb();
 //---------------------------LOGIN-----------------------------------------------------------

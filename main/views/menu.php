@@ -30,7 +30,7 @@
 		<span class="menuTitle">Меню</span>
 		<ul>
 			<li>
-				<a href="/" class="active"><span>
+				<a href="index.php" class="active"><span>
 					<svg class="menuIcon home" width="13" height="13" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
 						<circle cx="2.6" cy="2.6" r="2.1" stroke="#3A55EE"/>
 						<circle cx="10.4" cy="2.6" r="2.6" fill="#3A55EE"/>
@@ -40,7 +40,8 @@
 				Главная</a>
 			</li>
 			<li>
-				<a target="_blank" href="/access-is-denied.html"><span>
+				<a href="profile.php?user_id= <?echo $_SESSION['id'] ?>"><span>
+
 					<svg class="menuIcon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 28.7 29.2"
 						xml:space="preserve">
 						<circle cx="14.5" cy="7.1" r="6.6"/>
