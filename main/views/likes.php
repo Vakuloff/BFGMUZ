@@ -75,8 +75,23 @@ function userLiked($music_id)
   	return false;
   }
 }
-$sql = "SELECT * FROM Music";
-$result = mysqli_query($conn, $sql);
-// fetch all music from database
-// return them as an associative array called $music_arr
-$music_arr = mysqli_fetch_all($result, MYSQLI_ASSOC);
+if (isset($_GET['musicName'])){
+  $musicName = $_GET['musicName'];
+  $sql="SELECT * FROM Music
+  INNER JOIN Users ON Music.user_id = Users.id
+  WHERE title LIKE '%$musicName%'";
+  $result = mysqli_query($conn, $sql);
+  // fetch all music from database
+  // return them as an associative array called $music_arr
+  $music_arr = mysqli_fetch_all($result, MYSQLI_ASSOC);
+}else{
+  $sql = "SELECT * FROM Music
+          INNER JOIN Users ON Music.user_id = Users.id";
+  $result = mysqli_query($conn, $sql);
+  // fetch all music from database
+  // return them as an associative array called $music_arr
+  $music_arr = mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+
+
+
