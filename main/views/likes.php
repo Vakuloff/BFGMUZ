@@ -79,7 +79,7 @@ if (isset($_GET['musicName'])){
   $musicName = $_GET['musicName'];
   $sql="SELECT Music.id AS music_id, Music.title, Music.user_id, Music.link,Users.id AS user_id, Users.first_name, Users.last_name, Users.img FROM Music
         INNER JOIN Users ON Music.user_id = Users.id
-  WHERE title LIKE '%$musicName%'";
+        WHERE title LIKE '%$musicName%'";
   $result = mysqli_query($conn, $sql);
   // fetch all music from database
   // return them as an associative array called $music_arr

@@ -83,13 +83,13 @@
 													</div>
 												</div>
 											</div>
-										<?php endforeach ?>
+										<?php endforeach; ?>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<a href="#" class="button buttonTracks"><span>Все треки</span></a>
+					<a href="uploadedMusic.php?user_id=<?echo $user->user_id ?>" class="button buttonTracks"><span>Все треки</span></a>
 					<div class="dropPost">
 						<h3>Сделать публикацию:</h3>
 						<form class="dropTextForm">

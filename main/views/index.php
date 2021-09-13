@@ -15,6 +15,8 @@
 						<button type="submit" class="searchButton"></button>
 					</form>
 				</div>
+				<!-- Content -->
+				
 			</main>
 		</div>
 		<?

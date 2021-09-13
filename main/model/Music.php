@@ -83,13 +83,43 @@ class Music
 	public function ifLiked($dbcon, $user_id, $music_id)
 	{
 		$sql = "SELECT * FROM UsersxMusic WHERE user_id=$user_id 
-  		  AND music_id=$music_id AND rating_action='like'";
+  		  AND music_id=$music_id AND action='like'";
 
   		$pst = $dbcon->prepare($sql);
   		$pst->bindParam(':user_id', $user_id);
 		$pst->bindParam(':music_id', $music_id);
 		$pst->execute();
 		
+		$music = $pst->fetchAll(PDO::FETCH_OBJ);
+		return $music;
+	}
+
+	public function getLikedMusic($dbcon, $user_id)
+	{
+		$sql = "SELECT UsersxMusic.id as music_liked_id, 
+				Users.id as user_id, Users.first_name, Users.last_name, Users.img,
+				Music.title, Music.link
+				FROM UsersxMusic
+				INNER JOIN Users ON UsersxMusic.user_id = Users.id
+				INNER JOIN Music ON UsersxMusic.music_id = Music.id
+				WHERE Users.id = :user_id";
+
+  		$pst = $dbcon->prepare($sql);
+  		$pst->bindParam(':user_id', $user_id);  
+  		$pst->execute();
+		
+		$music = $pst->fetchAll(PDO::FETCH_OBJ);
+		return $music;
+	}
+
+	public function getTopSongs($dbcon)
+	{
+		$sql="SELECT UsersxMusic.id, UsersxMusic.music_id, UsersxMusic.user_id, UsersxMusic.action, UsersxMusic.date, COUNT(UsersxMusic.id) as 'likes_count' FROM `UsersxMusic` 
+			GROUP BY UsersxMusic.music_id
+			ORDER BY likes_count DESC";
+		$pst = $dbcon->prepare($sql);
+		$pst->execute();
+
 		$music = $pst->fetchAll(PDO::FETCH_OBJ);
 		return $music;
 	}

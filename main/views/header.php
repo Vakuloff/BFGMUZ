@@ -119,7 +119,12 @@ if(isset($_SESSION['id']))
 
 	//Music upload
 	if (isset($_POST['addMusic'])) {
-	  $uploadfile = "../media/music/".$_FILES['uploadmusic']['name'];
+    $date = new DateTime();
+    $date_hash = hash('ripemd160', $date->getTimestamp());
+    $login_hash = hash('ripemd160', $_SESSION['username']);
+    $uniqueHash = $date_hash . $login_hash;
+
+	  $uploadfile = "../media/music/". $uniqueHash . $_FILES['uploadmusic']['name'];
 	  move_uploaded_file($_FILES['uploadmusic']['tmp_name'], $uploadfile);
 	
 	  $title = $_FILES['uploadmusic']['name'];
@@ -131,9 +136,15 @@ if(isset($_SESSION['id']))
 
 	// music list
 	$all_music = $music->getAllMusicByUser($dbcon, $user_id);
+
 }
 //---------------------------MUSIC-LIST-END---------------------------------------------------------
-//echo $date = date("d/m/Y") . " " . date("h:i:sa");
+$date = new DateTime();
+$date_hash = hash('ripemd160', $date->getTimestamp());
+$login_hash = hash('ripemd160', $_SESSION['username']);
+$uniqueHash = $date_hash . $login_hash;
+echo $uniqueHash;
+
  ?>
 
 <!DOCTYPE html>

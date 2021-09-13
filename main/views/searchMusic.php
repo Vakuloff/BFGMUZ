@@ -2,7 +2,6 @@
 <?
   $page_title = "BfgMuz All Tracks";
   include 'header.php';
-  var_dump($music_arr[0]);
 ?>
 <div class="container">
   <div class="row g-0">
