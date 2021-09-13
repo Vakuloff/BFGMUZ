@@ -19,8 +19,8 @@
 		<div class="col-lg-2">
 			<?php include 'menu.php' ?>
 		</div>
-		<div class="col-lg-7 main">
-			<main>	
+		<div class="col-lg-7">
+			<main class="main">	
 				<div class="searchWrapper">
 					<form method="GET" action="searchMusic.php">
 						<input type="text" placeholder="Поиск" name="musicName">
@@ -67,7 +67,7 @@
 													<h6><?echo $music->title?></h6>
 												</div>
 												<div class="topTracks_wrapper">
-													<div class="topTracks_likes">
+													<div class="topTracks_likes liked">
 														<?echo $m->getLikes($dbcon, $music->id)[0]->Likes[0] ?> <span class="like"></span>
 													</div>
 													<div class="topTracks_user">

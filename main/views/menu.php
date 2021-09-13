@@ -5,25 +5,52 @@
 
 	<div class="mobileUser">
 
-	<!-- Пользователь не залогинен -->
-
 	<div class="menuClose">
 		<svg xmlns="http://www.w3.org/2000/svg"><path d="M31 13.5a1.5 1.5 0 000-3v3zM.94 10.94a1.5 1.5 0 000 2.12l9.545 9.547a1.5 1.5 0 102.122-2.122L4.12 12l8.486-8.485a1.5 1.5 0 10-2.122-2.122L.94 10.94zM31 10.5H2v3h29v-3z"/></svg>					
 	</div>
+	<!-- Пользователь залогинен -->
+	<? if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true): ?>
+		<div class="user">
+			<div class="userWrapper userIn">
+				<div class="userProfile">
+					<a href="profile.php?user_id=<? echo $_SESSION['id'] ?>"class="userActive_item">
+						<div class="userActive_photo">
+							<img src="../images/dist/main/avatars/<? echo $_SESSION["img"] ?>" alt="UserName 1" title="Ваш профиль">
+						</div>
+					</a>
+					<div class="userName">
+						<p class="userName_title"><? echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?></p>
+						<p class="userName_rate"><span>#1</span> в рейтинге пользователей</p>
 
-	<div class="user">
-		<div class="userWrapper userAuth">
-			<div class="authTitle">
-				Вход / 
-				<a href="/registration.html">Регистрация</a>
+					</div>
+					<div class="allPosts_sideMenu">
+						<button><svg width="4" height="18" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="2"/><circle cx="2" cy="9" r="2"/><circle cx="2" cy="16" r="2"/></svg></button>
+						<div class="sideMenu_inner">
+							<ul>
+								<li><a href="profileEdit.php?user_id=<? echo $_SESSION['id'] ?>">Изменить</a></li>
+								<li><a href="#" class="sendReport">Сообщить о проблеме</a></li>
+								<li><a href="logout.php">Выйти</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<button class="button download"><span>Загрузить трек</span></button>
 			</div>
-			<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-				<input type="text" name="username" placeholder="Логин или e-mail">
-				<input type="password" name="password" placeholder="Пароль">
-				<button type="submit" class="button"><span>Войти</span></button>
-			</form>
 		</div>
-	</div>	
+	<? else: ?>
+		<div class="user">
+			<div class="userWrapper userAuth">
+				<div class="authTitle">Вход / 
+					<a href="registration.php">Регистрация</a>
+				</div>
+				<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
+					<input type="text" name="username" placeholder="Логин">
+					<input type="password" name="password" placeholder="Пароль">
+					<button class="button" name="login"><span>Войти</span></button>
+				</form>
+			</div>
+		</div>
+	<? endif; ?>
 	</div>
 
 	<div class="menuGroup">
@@ -51,7 +78,7 @@
 					Моя страница</a>
 			</li>
 			<li>
-				<a target="_blank" href="/access-is-denied.html"><span>
+				<a href="ratings.php"><span>
 					<svg class="menuIcon" viewBox="0 0 14 12" xmlns="http://www.w3.org/2000/svg">
 						<rect width="4" height="12" rx="2"/>
 						<rect x="5" y="4" width="4" height="8" rx="2"/>

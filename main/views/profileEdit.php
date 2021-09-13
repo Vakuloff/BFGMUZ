@@ -243,8 +243,8 @@ function display_error_editProfile() {
 		<div class="col-lg-2">
 			<?php include 'menu.php' ?>
 		</div>
-		<div class="col-lg-7 main registrationPage">
-			<main>	
+		<div class="col-lg-7 registrationPage">
+			<main class="main">	
 				<div class="user">
 					<div class="userWrapper userAuth">
 						<div class="authTitle">

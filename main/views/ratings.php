@@ -5,16 +5,14 @@
 	$dbcon = Database::getDb();
 	$m = new Music();
 	$rating = $m->getTopSongs($dbcon);
-
-	var_dump($rating);
 ?>
 <div class="container">
 	<div class="row g-0">
 		<div class="col-lg-2">
 			<?php include 'menu.php' ?>
 		</div>
-		<div class="col-lg-7 main">
-			<main>	
+		<div class="col-lg-7">
+			<main class="main">	
 				<div class="searchWrapper">
 					<form method="GET" action="searchMusic.php">
 						<input type="text" placeholder="Поиск" name="musicName">

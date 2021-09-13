@@ -92,6 +92,3 @@ if (isset($_GET['musicName'])){
   // return them as an associative array called $music_arr
   $music_arr = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
-
-
-
