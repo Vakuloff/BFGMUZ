@@ -262,13 +262,62 @@ function display_error_editProfile() {
 							<label for="img">Аватар:</label>
 							<input type="file" name="img" accept="img/*">
 							<div class="buttonWrapperEdit">
-								<!-- <button class="button cancel"><span>Отменить</span></button> -->
 								<button type="submit" class="button disabled saveChanges"><span>Изменить</span></button>
 							</div>
-
 						</form>
-							</div>
-						</div>
+					</div>
+				</div>
+				<div class="user">
+                            <div class="userWrapper userAuth">
+
+                                <div class="authTitle">
+                                    Изменить персональные данные
+                                </div>
+                                <form method="POST" class="dataEditForm">
+                                    <div class="editWrapper">
+                                        <input type="text" placeholder="Имя">
+                                        <button class="button saveChanges"><span>Изменить</span></button>
+                                    </div>
+                                </form>
+
+                                <form method="POST" class="dataEditForm">
+                                    <div class="editWrapper">
+                                        <input type="text" placeholder="Логин">
+                                        <button class="button saveChanges"><span>Изменить</span></button>
+                                    </div>
+                                </form>
+
+                                <form method="POST" class="dataEditForm">
+                                    <div class="editWrapper">
+                                        <input type="email" placeholder="E-mail">
+                                        <button class="button saveChanges"><span>Изменить</span></button>
+                                    </div>
+                                </form>
+
+                                <form method="POST" class="dataEditForm passEdit">
+                                    <div class="editWrapper">
+                                        <input class="firstPass" type="password" placeholder="Пароль">
+                                        <input class="secondPass" type="password" placeholder="Повторите пароль">
+                                    </div>
+                                    <button class="button saveChanges"><span>Изменить</span></button>
+                                </form>
+
+                                <form method="POST" class="dataEditForm picEdit">
+                                	<div class="editWrapper">
+                                		<div class="formAddTrack_wrapper">
+											<input type="file"  name="uploadmusic" id="formAddTrack_file" class="formAddTrack_file" required>
+											<label for="formAddTrack_file" class="button formAddTrack">
+												<img src="../images/dist/icons/addTrack.svg" alt="add track bgmuz">
+												<span class="formAddTrack_descr">Выберите трек</span>
+											</label>
+										</div>
+										<button class="button saveChanges"><span>Изменить</span></button>
+                                	</div>
+                                </form>
+
+
+                            </div>
+                        </div>
 			</main>
 		</div>
 		<?

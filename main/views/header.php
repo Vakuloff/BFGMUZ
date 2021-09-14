@@ -143,14 +143,13 @@ function display_error() {
 session_start();
 //---------------------------LOGIN-END----------------------------------------------------------
 include('likes.php');
-//---------------------------MUSIC-LIST----------------------------------------------------------
+//---------------------------MUSIC-Upload----------------------------------------------------------
 if(isset($_SESSION['id']))
 {
 	$music = new Music();
 	$user_id = $_SESSION['id'];
 
 
-	//Music upload
 	if (isset($_POST['addMusic'])) {
     $date = new DateTime();
     $date_hash = hash('ripemd160', $date->getTimestamp());
@@ -160,7 +159,9 @@ if(isset($_SESSION['id']))
 	  $uploadfile = "../media/music/". $uniqueHash . $_FILES['uploadmusic']['name'];
 	  move_uploaded_file($_FILES['uploadmusic']['tmp_name'], $uploadfile);
 	
-	  $title = $_FILES['uploadmusic']['name'];
+	  $title = $_POST['nameTrack'];
+    $author = $_POST['authorTrack'];
+
 	  $user_id = $_SESSION['id'];
 	  $link = $uploadfile;
     if($title === '' || $title === null || $title === ' '){
@@ -170,7 +171,7 @@ if(isset($_SESSION['id']))
         </script>
       <?
     }else{
-      $music->addMusic($dbcon, $title, $user_id, $link);
+      $music->addMusic($dbcon, $title, $author, $user_id, $link);
       ?>
         <script>
           alert('Трек был успешно загружен');

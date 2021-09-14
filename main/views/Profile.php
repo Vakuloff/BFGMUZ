@@ -45,7 +45,7 @@
 						</div>
 						<div class="userActive_info">
 							<? echo $user->first_name . ' ' . $user->last_name?>
-							<button class="message button"><span>Написать</span></button>
+							<span class="fake_btn"></span>
 						</div>
 					</div>
 					<div class="userProfile_info">
@@ -64,10 +64,11 @@
 									  				<source src="<? echo $music->link?>" type="audio/mp3" />
 												</audio>
 												<div class="topTracks_info">
-													<h6><?echo $music->title?></h6>
+													<h6><?echo $music->author?></h6>
+													<p><? echo $music->title?></p>
 												</div>
 												<div class="topTracks_wrapper">
-													<div class="topTracks_likes liked">
+													<div class="topTracks_likes disabled_btn">
 														<?echo $m->getLikes($dbcon, $music->id)[0]->Likes[0] ?> <span class="like"></span>
 													</div>
 													<div class="topTracks_user">
@@ -90,12 +91,30 @@
 						</div>
 					</div>
 					<a href="uploadedMusic.php?user_id=<?echo $user->user_id ?>" class="button buttonTracks"><span>Все треки</span></a>
-					<div class="dropPost">
+					<div class="dropPost userAuth">
 						<h3>Сделать публикацию:</h3>
+						
 						<form class="dropTextForm">
-							<textarea name="droptext" class="dropText"></textarea>
+							<div class="buttonDropWrapper uploadFilesWrapper">
+                                <div class="formAddTrack_wrapper">
+                                    <input type="file"  name="uploadmusic" id="formAddTrack_file" class="formAddTrack_file">
+                                    <label for="formAddTrack_file" class="button formAddTrack available">
+                                        <img src="../images/dist/icons/addTrack.svg" alt="add track bgmuz">
+                                        <span class="formAddTrack_descr">Выберите фото</span>
+                                    </label>
+                                </div>
+                                <div class="formAddTrack_wrapper">
+                                    <input type="file"  name="uploadmusic" id="formAddTrack_file" class="formAddTrack_file">
+                                    <label for="formAddTrack_file" class="button formAddTrack available">
+                                        <img src="../images/dist/icons/addTrack.svg" alt="add track bgmuz">
+                                        <span class="formAddTrack_descr">Прикрепите трек</span>
+                                    </label>
+                                </div>
+                            </div>
+
+							<textarea required name="droptext" class="dropTextArea" placeholder="Введите текст вашей публикации"></textarea>
 							<div class="buttonDropWrapper">
-								<button class="button"><span>Опубликовать</span></button>
+								<button class="button postDropButton"><span>Опубликовать</span></button>
 							</div>
 						</form>
 					</div>

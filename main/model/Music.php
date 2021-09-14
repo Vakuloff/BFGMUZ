@@ -1,12 +1,14 @@
 <?php 
 class Music
 {
-	public function addMusic($dbcon, $title, $user_id, $link)
+	public function addMusic($dbcon, $title, $author, $user_id, $link)
 	{
-		$sql = "INSERT INTO Music (title, user_id, link)
-				VALUES (:title, :user_id, :link)";
+		$sql = "INSERT INTO Music (title, author, user_id, link, date)
+				VALUES (:title, :author, :user_id, :link, NOW())";
+				
 		$pst = $dbcon->prepare($sql);
 		$pst->bindParam(':title', $title);
+		$pst->bindParam(':author', $author);
 		$pst->bindParam(':user_id', $user_id);
 		$pst->bindParam(':link', $link);
 
@@ -97,8 +99,8 @@ class Music
 	public function getLikedMusic($dbcon, $user_id)
 	{
 		$sql = "SELECT UsersxMusic.id as music_liked_id, 
-				Users.id as user_id, Users.first_name, Users.last_name, Users.img,
-				Music.title, Music.link
+				Users.id as user_id, Users.first_name, Users.last_name, Users.img, 
+				Music.id, Music.title, Music.author, Music.link
 				FROM UsersxMusic
 				INNER JOIN Users ON UsersxMusic.user_id = Users.id
 				INNER JOIN Music ON UsersxMusic.music_id = Music.id
@@ -114,9 +116,14 @@ class Music
 
 	public function getTopSongs($dbcon)
 	{
-		$sql="SELECT UsersxMusic.id, UsersxMusic.music_id, UsersxMusic.user_id, UsersxMusic.action, UsersxMusic.date, COUNT(UsersxMusic.id) as 'likes_count' FROM `UsersxMusic` 
+		$sql="SELECT UsersxMusic.id, UsersxMusic.music_id, Music.title, Music.author, Music.link, UsersxMusic.user_id, Users.first_name, Users.last_name, 
+			Users.img, UsersxMusic.action, COUNT(UsersxMusic.id) as 'likes_count' 
+			FROM `UsersxMusic`
+			INNER JOIN Users ON UsersxMusic.user_id = Users.id
+			INNER JOIN Music ON UsersxMusic.music_id = Music.id
 			GROUP BY UsersxMusic.music_id
-			ORDER BY likes_count DESC";
+			ORDER BY likes_count DESC LIMIT 10";
+
 		$pst = $dbcon->prepare($sql);
 		$pst->execute();
 

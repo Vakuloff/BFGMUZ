@@ -1,3 +1,8 @@
+<?
+	$dbcon = Database::getDb();
+	$m = new Music();
+	$rating = $m->getTopSongs($dbcon);
+?>
 <div class="col-lg-3 sidebar logIn">
 	<!-- Проверка логина -->
 	<? if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true): ?>
@@ -11,7 +16,7 @@
 					</a>
 					<div class="userName">
 						<p class="userName_title"><? echo $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?></p>
-						<p class="userName_rate"><span>#1</span> в рейтинге пользователей</p>
+						<p class="userName_rate"><span>#<? echo $_SESSION['id'] ?></span> в рейтинге пользователей</p>
 
 					</div>
 					<div class="allPosts_sideMenu">
@@ -28,18 +33,22 @@
 				<button class="button download"><span>Загрузить трек</span></button>
 			</div>
 		</div>
-		<div class="tracksUpload modalForm">
+		<div class="tracksUpload modalForm userAuth">
 			<span class="close"></span>
 			<form method="POST" enctype="multipart/form-data">
 				<div class="authTitle">Загрузка треков</div>
-				<p>Выберите один либо несколько треков для загрузки, в формате <b>.mp3 /.ogg / wav</b></p>
+				
+				<input type="text" name="nameTrack" placeholder="Укажите название" required>
+				<input type="text" name="authorTrack" placeholder="Укажите автора" required>
+
 				<div class="formAddTrack_wrapper">
-					<input type="file"  name="uploadmusic" id="formAddTrack_file" class="formAddTrack_file">
+					<input type="file"  name="uploadmusic" id="formAddTrack_file" class="formAddTrack_file" required>
 						<label for="formAddTrack_file" class="button formAddTrack">
 							<img src="../images/dist/icons/addTrack.svg" alt="add track bgmuz">
 							<span class="formAddTrack_descr">Выберите трек</span>
 						</label>
 				</div>
+				<p>Выберите один либо несколько треков для загрузки, в формате <b>.mp3 /.ogg / wav</b></p>
  				<button type="submit" name="addMusic" class="button download"><span>Загрузить трек</span></button>
 			</form>
 		</div>
@@ -63,14 +72,15 @@
 										<source src="<? echo $all_music->link ?>" type="audio/mp3" />
 									</audio>
 									<div class="topTracks_info">
-										<h6><? echo $all_music->title ?></h6>
+										<h6><? echo $all_music->author ?></h6>
+										<p><? echo $all_music->title?></p>
 									</div>
 								</div>
 							<? endforeach; ?>
 						<? endif; ?>
 					</div>
 					<div class="playlistsMusic_list favorites">
-						<? if (empty($all_music)): ?>
+						<? if (empty($favorites_music)): ?>
 							<p class="infoMessage">Плейлист пока пустой ..</p>
 						<? else: ?>
 							<? foreach($favorites_music as $favorites_music): ?>
@@ -79,12 +89,32 @@
 										<source src="<? echo $favorites_music->link ?>" type="audio/mp3" />
 									</audio>
 									<div class="topTracks_info">
-										<h6><? echo $favorites_music->title ?></h6>
+										<h6><? echo $favorites_music->author ?></h6>
+										<p><? echo $favorites_music->title ?></p>
 									</div>
 								</div>
 							<? endforeach; ?>
 						<? endif; ?>
 					</div>
+					<!-- -------------------------------------------------------------------------- -->
+					<div class="playlistsMusic_list topTen">
+						<? if (empty($rating)): ?>
+							<p class="infoMessage">Плейлист пока пустой ..</p>
+						<? else: ?>
+							<? foreach($rating as $rating): ?>
+								<div class="topTracks_item">
+									<audio class="player" controls>
+										<source src="<? echo $rating->link ?>" type="audio/mp3" />
+									</audio>
+									<div class="topTracks_info">
+										<h6><? echo $rating->author ?></h6>
+										<p><? echo $rating->title ?></p>
+									</div>
+								</div>
+							<? endforeach; ?>
+						<? endif; ?>
+					</div>
+					<!-- -------------------------------------------------------------------------- -->
 				</div>
 			</div>
 		</div>

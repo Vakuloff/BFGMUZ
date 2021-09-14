@@ -26,9 +26,17 @@
                 <source src="<?php echo $music_arr['link'] ?>" type="audio/mp3" />
               </audio>
               <div class="topTracks_info">
-                <h6><?php echo $music_arr['title'] ?></h6>
+                <h6><? echo $music_arr['author'] ?></h6>
+                <p><? echo $music_arr['title'] ?></p>
               </div>
               <div class="topTracks_wrapper">
+                <? if (!isset($_SESSION['id'])): ?>
+                  <div class="topTracks_likes default disabled_btn" 
+                      data-id="<?php echo $music_arr['music_id'] ?>">
+                      <span class="likes"><?php echo getLikes($music_arr['music_id']); ?></span>
+                      <span class="like"></span>
+                </div>
+                <? else : ?>
                 <div <?php if (userLiked($music_arr['music_id'])): ?>
                      class="topTracks_likes liked"
                       <? else: ?>
@@ -38,6 +46,7 @@
                       <span class="likes"><?php echo getLikes($music_arr['music_id']); ?></span>
                       <span class="like"></span>
                 </div>
+              <? endif; ?>
                 <div class="topTracks_user">
                   <div class="userInfo">
                     Загружен
