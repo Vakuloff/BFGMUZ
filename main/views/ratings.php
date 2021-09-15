@@ -68,7 +68,8 @@
 										<div class="topTracks_wrapper">
 											<div class="topTracks_likes disabled_btn">
 												<p class="topPos">#<? echo $counter; $counter++; ?></p>
-												<? echo $rating->likes_count ?><span class="like"></span>
+												<? echo $rating->likes_count ?>
+												<span class="like"></span>
 											</div>
 											<div class="topTracks_user">
 												<div class="userInfo">Загружен
