@@ -24,6 +24,16 @@ class User
 		$pst = $dbcon->prepare($sql); 
   		$pst->execute();
 		
+		$user = $pst->fetchAll(PDO::FETCH_OBJ);
+		return $user;
+	}
+
+	public function getAllUsers($dbcon){
+		$sql="SELECT * FROM Users";
+
+		$pst = $dbcon->prepare($sql); 
+  		$pst->execute();
+		
 		$music = $pst->fetchAll(PDO::FETCH_OBJ);
 		return $music;
 	}

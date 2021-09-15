@@ -43,7 +43,7 @@
 										Загружен
 										<span><? echo $likedMusic->first_name . ' ' . $likedMusic->last_name?></span>
 									</div>
-									<a target="_blank" href="profile.php?user_id=<? echo $likedMusic->user_id ?>" class="userActive_item">
+									<a href="profile.php?user_id=<? echo $likedMusic->user_id ?>" class="userActive_item">
 										<div class="userActive_photo">
 											<img src="../images/dist/main/avatars/<?php echo $likedMusic->img ?>" alt="UserName 1">
 										</div>

@@ -5,6 +5,9 @@
 			<p>Благодарим за ваше обращение!</p>
 		</div>
 	</div>
+	<section class="bugInfo">
+        <p>Если у Вас возникли трудности при использовании сайта, либо есть пожелания/предложения, пожалуйста, <a href="#" class="sendReport">Заполните форму</a>,  И мы постараемся вам помочь либо учтём ваше сообщение. С уважением, команда BGMUZE</p>
+    </section>
 	<div class="bugReport userAuth modalForm">
 		<span class="close"></span>
 		<form method="POST">
@@ -18,14 +21,8 @@
  			<button type="submit" name="addMusic" class="button"><span>Отправить</span></button>
 		</form>
 	</div>
-	<script src="https://cdn.tiny.cloud/1/q84swdpjye92w7arqbw30b7irscjspljpnx2podv4rtuvvoi/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-	<script>
-   		tinymce.init({
-      	selector: '.dropText'
-    	});
-  	</script>
-	<script src="../js/likes.js"></script>
-	<script src="../js/app.min.js"></script>
 </footer>
+<script src="../js/likes.js"></script>
+<script src="../js/app.min.js"></script>
 </body>
 </html>

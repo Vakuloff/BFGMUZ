@@ -14,7 +14,12 @@
 			<?php include 'menu.php' ?>
 		</div>
 		<div class="col-lg-7">
-			<main class="main">	
+			<main class="main">
+				<div class="titleBanner">
+					<h2>Присоединяйтесь к порталу BgMUZE</h2>
+					<p>Создавайте, делитесь, ищите, и слушайте музыку,  голосуйте за понравившиеся треки, формируйте свои плейлисты</p>
+					<a href="/BFGMUZ/main/views/searchMusic.php?musicName=" class="button"><span>Все треки</span></a>
+				</div>	
 				<div class="searchWrapper">
 					<form method="GET" action="searchMusic.php">
 						<input type="text" placeholder="Поиск" name="musicName">
@@ -25,7 +30,6 @@
 				<div class="userActive">
 					<div class="userActive_title">
 						<h3>Последние активные пользователи</h3>
-						<!-- <a target="_blank" href="/access-is-denied.html">Посмотреть всех</a> -->
 					</div>
 					<div class="userActive_list">
 						<? foreach($recent_active_users as $recent_active_users): ?>

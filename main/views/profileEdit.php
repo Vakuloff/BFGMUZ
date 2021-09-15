@@ -282,8 +282,6 @@ function display_error_editProfile() {
         echo '</div>';
     }
 }  
-var_dump($_SESSION);
-
 ?>
 <div class="container">
 	<div class="row g-0">

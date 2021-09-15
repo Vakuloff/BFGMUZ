@@ -40,7 +40,7 @@
 										</div>
 										<div class="topTracks_user">
 											<div class="userInfo">Загружен
-												<span><? echo $rating[0]->first_name . ' ' . $rating[0]->last_name ?></span>
+												<a href="profile.php?user_id=<? echo $rating[0]->user_id ?>"><? echo $rating[0]->first_name . ' ' . $rating[0]->last_name ?></a>
 											</div>
 											<a href="profile.php?user_id=<? echo $rating[0]->user_id ?>" class="userActive_item">
 												<div class="userActive_photo">
