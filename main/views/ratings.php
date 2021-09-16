@@ -1,5 +1,5 @@
 <?
-	$page_title = "BfgMuz";
+	$page_title = "Рейтинг";
 	include 'header.php';
 
 	$dbcon = Database::getDb();

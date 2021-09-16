@@ -1,6 +1,6 @@
 
 <?
-  $page_title = "BfgMuz All Tracks";
+  $page_title = "BgMuze Поиск";
   include 'header.php';
 ?>
 <div class="container">

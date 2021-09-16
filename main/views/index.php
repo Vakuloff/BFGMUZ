@@ -1,5 +1,5 @@
 <?
-	$page_title = "BfgMuz";
+	$page_title = "BgMuze - музыкальное сообщество";
 	include 'header.php';
 	$dbcon = Database::getDb();
 	$m = new Music();
@@ -88,7 +88,43 @@
 					</div>
 				</div>
 				<div class="allPosts">
-						<h3>Последние 10 публикаций сообщества</h3>
+					<h3>Закрепленная публикация</h3>
+					<div class="container">
+						<div class="row g-0">
+							<div class="col-12">
+								<div class="allPosts_item liked">
+									<div class="topTracks_wrapper">
+										<div class="topTracks_user">
+											<a href="profile.php?user_id=1" class="userActive_item">
+												<div class="userActive_photo">
+													<img src="../images/dist/main/avatars/wtf.jpg" alt="UserName 1">
+												</div>
+											</a>
+											<div class="userInfo">
+												<span>Nick Vakulov</span>
+													2021-09-15 21:00:00
+											</div>
+										</div>
+									</div>
+									<div class="allPosts_content">
+										<p>Уважаемые пользователи! Надеемся с Вашей помощью наш проект станет еще лучше. Ваши пожелания, жалобы и предложения Вы можете отправить через контекстное меню, которое находится справа от Вашего аватара, либо написав на нашу почту <a href="mailto:wayinweb.pro@gmail.com">wayinweb.pro@gmail.com</a>
+											<br><b>Имейте ввиду, что на данный момент система лайков работает только на странице поиска. </b>
+											<br>Благодарим за уделённое время. </p>
+										<div class="topTracks_item">
+											<audio class="player" controls>
+												<source src="../media/music/The Phoenix.mp3" type="audio/mp3" />
+											</audio>
+											<div class="topTracks_info">
+												<h6>Fall Out Boy</h6>
+												<p>The Phoenix</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+						<h3>Последние публикации сообщества</h3>
 						<div class="container">
 							<div class="row g-0">
 								<!-- ------------------------------------------------ -->
