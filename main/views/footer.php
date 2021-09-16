@@ -22,6 +22,11 @@
 		</form>
 	</div>
 </footer>
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 <script src="../js/likes.js"></script>
 <script src="../js/app.min.js"></script>
 </body>

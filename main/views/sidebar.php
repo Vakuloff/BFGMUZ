@@ -25,6 +25,9 @@
 							<ul>
 								<li><a href="profileEdit.php?user_id=<? echo $_SESSION['id'] ?>">Изменить</a></li>
 								<li><a href="#" class="sendReport">Сообщить о проблеме</a></li>
+								<? if($_SESSION['id'] == '1' || $_SESSION['id'] == '49'): ?>
+									<li><a href="admin/adminPanel.php">Въебать варварам!</a></li>
+								<? endif; ?>
 								<li><a href="logout.php">Выйти</a></li>
 							</ul>
 						</div>
@@ -52,85 +55,116 @@
  				<button type="submit" name="addMusic" class="button download"><span>Загрузить трек</span></button>
 			</form>
 		</div>
-	<div class="playlists">
-		<div class="user">
-			<div class="userWrapper">
-				<h3>Плейлисты</h3>
-				<div class="playlistsNav">
-					<div class="playlistsNav_item">Загруженные</div>
-					<div class="playlistsNav_item">Понравившиеся</div>
+		<div class="playlists">
+			<div class="user">
+				<div class="userWrapper">
+					<h3>Плейлисты</h3>
+					<div class="playlistsNav">
+						<div class="playlistsNav_item">Загруженные</div>
+						<div class="playlistsNav_item">Понравившиеся</div>
 					<div class="playlistsNav_item">Топ 10</div>
-				</div>
-				<div class="playlistsMusic">
-					<div class="playlistsMusic_list popular">
-						<? if (empty($all_music)): ?>
-							<p class="infoMessage">Плейлист пока пустой ..</p>
-						<? else: ?>
-							<? foreach($all_music as $all_music): ?>
-								<div class="topTracks_item">
-									<audio class="player" controls>
-										<source src="<? echo $all_music->link ?>" type="audio/mp3" />
-									</audio>
-									<div class="topTracks_info">
-										<h6><? echo $all_music->author ?></h6>
-										<p><? echo $all_music->title?></p>
-									</div>
-								</div>
-							<? endforeach; ?>
-						<? endif; ?>
 					</div>
-					<div class="playlistsMusic_list favorites">
-						<? if (empty($favorites_music)): ?>
-							<p class="infoMessage">Плейлист пока пустой ..</p>
-						<? else: ?>
-							<? foreach($favorites_music as $favorites_music): ?>
-								<div class="topTracks_item">
-									<audio class="player" controls>
-										<source src="<? echo $favorites_music->link ?>" type="audio/mp3" />
-									</audio>
-									<div class="topTracks_info">
-										<h6><? echo $favorites_music->author ?></h6>
-										<p><? echo $favorites_music->title ?></p>
+					<div class="playlistsMusic">
+						<div class="playlistsMusic_list popular">
+							<? if (empty($all_music)): ?>
+								<p class="infoMessage">Плейлист пока пустой ..</p>
+							<? else: ?>
+								<? foreach($all_music as $all_music): ?>
+									<div class="topTracks_item">
+										<audio class="player" controls>
+											<source src="<? echo $all_music->link ?>" type="audio/mp3" />
+										</audio>
+										<div class="topTracks_info">
+											<h6><? echo $all_music->author ?></h6>
+											<p><? echo $all_music->title?></p>
+										</div>
 									</div>
-								</div>
-							<? endforeach; ?>
-						<? endif; ?>
-					</div>
+								<? endforeach; ?>
+							<? endif; ?>
+						</div>
+						<div class="playlistsMusic_list favorites">
+							<? if (empty($favorites_music)): ?>
+								<p class="infoMessage">Плейлист пока пустой ..</p>
+							<? else: ?>
+								<? foreach($favorites_music as $favorites_music): ?>
+									<div class="topTracks_item">
+										<audio class="player" controls>
+											<source src="<? echo $favorites_music->link ?>" type="audio/mp3" />
+										</audio>
+										<div class="topTracks_info">
+											<h6><? echo $favorites_music->author ?></h6>
+											<p><? echo $favorites_music->title ?></p>
+										</div>
+									</div>
+								<? endforeach; ?>
+							<? endif; ?>
+						</div>
 					<!-- -------------------------------------------------------------------------- -->
-					<div class="playlistsMusic_list topTen">
-						<? if (empty($rating)): ?>
-							<p class="infoMessage">Плейлист пока пустой ..</p>
-						<? else: ?>
-							<? foreach($rating as $rating): ?>
-								<div class="topTracks_item">
-									<audio class="player" controls>
-										<source src="<? echo $rating->link ?>" type="audio/mp3" />
-									</audio>
-									<div class="topTracks_info">
-										<h6><? echo $rating->author ?></h6>
-										<p><? echo $rating->title ?></p>
+						<div class="playlistsMusic_list topTen">
+							<? if (empty($rating)): ?>
+								<p class="infoMessage">Плейлист пока пустой ..</p>
+							<? else: ?>
+								<? foreach($rating as $rating): ?>
+									<div class="topTracks_item">
+										<audio class="player" controls>
+											<source src="<? echo $rating->link ?>" type="audio/mp3" />
+										</audio>
+										<div class="topTracks_info">
+											<h6><? echo $rating->author ?></h6>
+											<p><? echo $rating->title ?></p>
+										</div>
 									</div>
-								</div>
-							<? endforeach; ?>
-						<? endif; ?>
-					</div>
+								<? endforeach; ?>
+							<? endif; ?>
+						</div>
 					<!-- -------------------------------------------------------------------------- -->
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	<? else: ?>
+		<div class="user">
+			<div class="userWrapper userAuth">
+				<div class="authTitle">Вход / 
+					<a href="registration.php">Регистрация</a>
+				</div>
+				<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
+					<input type="text" name="username" placeholder="Логин">
+					<input type="password" name="password" placeholder="Пароль">
+					<button class="button" name="login"><span>Войти</span></button>
+				</form>
+			</div>
+		</div>
+		<div class="playlists">
+			<div class="user">
+				<div class="userWrapper">
+					<h3>Плейлисты</h3>
+					<div class="playlistsNav">
+					<div class="playlistsNav_item">Топ 10</div>
+					</div>
+					<div class="playlistsMusic">
+					<!-- -------------------------------------------------------------------------- -->
+						<div class="playlistsMusic_list topTen">
+							<? if (empty($rating)): ?>
+								<p class="infoMessage">Плейлист пока пустой ..</p>
+							<? else: ?>
+								<? foreach($rating as $rating): ?>
+									<div class="topTracks_item">
+										<audio class="player" controls>
+											<source src="<? echo $rating->link ?>" type="audio/mp3" />
+										</audio>
+										<div class="topTracks_info">
+											<h6><? echo $rating->author ?></h6>
+											<p><? echo $rating->title ?></p>
+										</div>
+									</div>
+								<? endforeach; ?>
+							<? endif; ?>
+						</div>
+					<!-- -------------------------------------------------------------------------- -->
+					</div>
+				</div>
+			</div>
+		</div>
+	<? endif; ?>
 </div>
-<? else: ?>
-	<div class="user">
-		<div class="userWrapper userAuth">
-			<div class="authTitle">Вход / 
-				<a href="registration.php">Регистрация</a>
-			</div>
-			<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
-				<input type="text" name="username" placeholder="Логин">
-				<input type="password" name="password" placeholder="Пароль">
-				<button class="button" name="login"><span>Войти</span></button>
-			</form>
-		</div>
-	</div>
-<? endif; ?>

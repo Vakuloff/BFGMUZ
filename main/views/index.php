@@ -3,10 +3,12 @@
 	include 'header.php';
 	$dbcon = Database::getDb();
 	$m = new Music();
-	$rating = $m->getTopSongs($dbcon);
-
 	$u = new User();
+	$p = new Post();
+
+	$rating = $m->getTopSongs($dbcon);
 	$recent_active_users = $u->getRecentActiveUsers($dbcon);
+	$post = $p->getAllPosts($dbcon);
 ?>
 <div class="container">
 	<div class="row g-0">
@@ -15,6 +17,9 @@
 		</div>
 		<div class="col-lg-7">
 			<main class="main">
+				<? if(isset($_GET['message'])): ?>
+					<p class='successMessage'><? echo $_GET['message'] ?></p>
+				<? endif; ?>
 				<div class="titleBanner">
 					<h2>Присоединяйтесь к порталу BgMUZE</h2>
 					<p>Создавайте, делитесь, ищите, и слушайте музыку,  голосуйте за понравившиеся треки, формируйте свои плейлисты</p>
@@ -82,6 +87,63 @@
 						</div>
 					</div>
 				</div>
+				<div class="allPosts">
+						<h3>Последние 10 публикаций сообщества</h3>
+						<div class="container">
+							<div class="row g-0">
+								<!-- ------------------------------------------------ -->
+								<?php foreach ($post as $post): ?>
+								<div class="col-12">
+									<div class="allPosts_item liked">
+										<div class="topTracks_wrapper">
+											<div class="topTracks_user">
+												<a href="profile.php?user_id=<? echo $post->author_id ?>" class="userActive_item">
+													<div class="userActive_photo">
+														<img src="../images/dist/main/avatars/<?php echo $post->img ?>" alt="UserName 1">
+													</div>
+												</a>
+												<div class="userInfo">
+													<span><? echo $post->first_name . ' ' . $post->last_name?></span>
+														<? echo $post->date ?>
+												</div>
+											</div>
+										</div>
+										<div class="allPosts_content">
+											<!-- Picture -->
+											<? if(is_null($post->img_link)): ?>
+												<div class="clearfix"></div>
+											<? else: ?>
+												<img src="<? echo $post->img_link ?>" alt="Post 1">
+											<? endif; ?>
+											<!-- Text -->
+											<? if(is_null($post->content)): ?>
+												<div class="clearfix"></div>
+											<? else: ?>
+												<p><? echo $post->content ?></p>
+											<? endif; ?>
+											<div class="clearfix"></div>
+											<!-- Music -->
+											<? if(is_null($post->music_name)): ?>
+												<div class="clearfix"></div>
+											<? else: ?>
+												<div class="topTracks_item">
+													<audio class="player" controls>
+														<source src="<? echo $post->music_link ?>" type="audio/mp3" />
+													</audio>
+													<div class="topTracks_info">
+														<p><? echo $post->music_name ?></p>
+													</div>
+												</div>
+											<? endif; ?>
+											
+										</div>
+									</div>
+								</div>
+								<? endforeach; ?>
+								<!-- ------------------------------------------------ -->
+							</div>
+						</div>
+					</div>
 			</main>
 		</div>
 		<?

@@ -181,22 +181,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $param_password = password_hash($password, PASSWORD_DEFAULT);
 
         if($stmt->execute()){
-        session_start();
-
-        // this will make session available in other pages
-        $_SESSION["loggedin"] = true;
-        // we need to get the id and username since we will need to show the username value in some of the pages.
-        $_SESSION["id"] = $id;
-        $_SESSION["username"] = $username;
-        $_SESSION["email"] = $email;
-        $_SESSION["first_name"] = $first_name;
-        $_SESSION["last_name"] = $last_name;
-        $_SESSION["img"] = $img;
       ?>
         <!-- if all requirements are met for registeration, redirect to welcome page -->
-        <!-- <script type="text/javascript">
-        window.location.href = "index.php";
-        </script> -->
+        <script type="text/javascript">
+          window.location.href = "index.php?message=Спасибо за регистрацию! Теперь используйте данные, введенные ранее для авторизации!";
+        </script>
       <?php  
       }
       else{
@@ -261,6 +250,7 @@ $page_title = "BfgMuz - музыкальное сообщество";
 <div class="container">
 	<div class="row g-0">
 		<div class="col-lg-2">
+      <?php include 'menu.php' ?>
 		</div>
 
 				<div class="col-lg-7 registrationPage">
@@ -295,7 +285,7 @@ $page_title = "BfgMuz - музыкальное сообщество";
                     <label class="checkWrapper">
                       <input type="checkbox" class="acceptRules"><span></span> 
                     </label>
-                    <p>Вы соглашаетесь с <a target="_blank" href="access-is-denied.html">Правилами сайта</a> и <a target="_blank" href="access-is-denied.html">Лицензионным соглашнием</a></p>
+                    <p>Вы соглашаетесь с <a target="_blank" href="privacy.php">Правилами сайта</a> и <a target="_blank" href="agreement.php">Лицензионным соглашнием</a></p>
                   </div>
 									<button type="submit" name="register_btn" class="button buttonReg" disabled><span>Зарегистрироваться</span></button>
 								</form>

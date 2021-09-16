@@ -38,5 +38,22 @@ class Post
 		return $post;
 
 	}
+
+	public function getAllPosts($dbcon)
+	{
+		$sql = "SELECT Posts.id, Posts.content, Posts.music_link, Posts.music_name, 
+				Posts.img_link, Posts.receiver_id, Posts.author_id, Posts.date, Users.first_name, 
+				Users.last_name, Users.img, Users.id 
+				FROM Posts
+				INNER JOIN Users ON Posts.author_id = Users.id
+				ORDER BY Posts.date DESC LIMIT 10";
+
+		$pst = $dbcon->prepare($sql);
+		$pst->execute();
+
+		$post = $pst->fetchAll(PDO::FETCH_OBJ);
+		return $post;
+
+	}
 }
 ?>
